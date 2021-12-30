@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kian/assigment/myuint.cpp
+iostream
+-
+myuint.hpp
+/home/kian/assigment/myuint.hpp
+algorithm
+-
+stdlib.h
+-
+
+/home/kian/assigment/myuint.hpp
+iostream
+-
+vector
+-
+math.h
+-
+

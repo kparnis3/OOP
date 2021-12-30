@@ -1,0 +1,3 @@
+/home/kian/assigment/build/CMakeFiles/rebuild_cache.dir
+/home/kian/assigment/build/CMakeFiles/edit_cache.dir
+/home/kian/assigment/build/CMakeFiles/myuint.dir

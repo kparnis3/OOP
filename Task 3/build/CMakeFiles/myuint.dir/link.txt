@@ -1,0 +1,1 @@
+/bin/x86_64-linux-gnu-g++-10 -g CMakeFiles/myuint.dir/myuint.cpp.o -o myuint 
