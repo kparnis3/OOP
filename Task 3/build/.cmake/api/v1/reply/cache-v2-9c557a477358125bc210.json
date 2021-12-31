@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/kian/Task 3/build"
+			"value" : "/home/kian/git_workspace/OOP/Task 3/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -475,7 +475,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/kian/Task 3"
+			"value" : "/home/kian/git_workspace/OOP/Task 3"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1011,7 +1011,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/kian/Task 3/build"
+			"value" : "/home/kian/git_workspace/OOP/Task 3/build"
 		},
 		{
 			"name" : "HelloWorld_SOURCE_DIR",
@@ -1023,7 +1023,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/kian/Task 3"
+			"value" : "/home/kian/git_workspace/OOP/Task 3"
 		}
 	],
 	"kind" : "cache",

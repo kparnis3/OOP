@@ -1,3 +1,3 @@
-/home/kian/Task 3/build/CMakeFiles/rebuild_cache.dir
-/home/kian/Task 3/build/CMakeFiles/edit_cache.dir
-/home/kian/Task 3/build/CMakeFiles/myuint.dir
+/home/kian/git_workspace/OOP/Task 3/build/CMakeFiles/rebuild_cache.dir
+/home/kian/git_workspace/OOP/Task 3/build/CMakeFiles/edit_cache.dir
+/home/kian/git_workspace/OOP/Task 3/build/CMakeFiles/myuint.dir
