@@ -3,11 +3,6 @@
 #include <math.h>
 using namespace std;
 
-//template<int Template>
-//class myuint;
-//template<int Template>
-//myuint<Template> operator+(myuint<Template> value);
-
 template <int Template>
 class myuint
 {
@@ -16,37 +11,44 @@ class myuint
 
     public:
         myuint(string value);
-        myuint(); //if empty
+        myuint();
     
     //----- Part One -----
 
-    //what to implement
-        myuint<Template> operator-(myuint<Template> value); //subtraction
-        
+        myuint<Template> operator-(const myuint<Template> &value) const;
+        myuint<Template> operator-(const string &value) const;
+        myuint<Template> operator-=(const myuint<Template>  &value);
+        myuint<Template> operator-=(const string &value);
+
         myuint<Template> operator+(const myuint<Template> &value) const;
         myuint<Template> operator+(const string &value) const;
         myuint<Template> operator+=(const myuint<Template>  &value);
         myuint<Template> operator+=(const string &value);
+
+        myuint<Template> Subtract(const myuint<Template> &other) const;
+        myuint<Template> Subtract(const string &other) const;
         myuint<Template> Add(const myuint<Template> &other) const;
         myuint<Template> Add(const string &other) const;
 
         myuint<Template> operator++(int);
         myuint<Template> operator++();
+        myuint<Template> operator--(int);
+        myuint<Template> operator--();
         
-
     //  myuint<Template> operator<<(myuint<Template> value); left shift
     //  myunit<Template> operator>>(myuint<Template> value); right shift
         bool operator!=(const myuint<Template> &value) const;
         bool operator==(const myuint<Template> &value) const;
-        bool operator<(const myuint<Template> &value) const; //less then
-        bool operator>(const myuint<Template> &value) const; //greater than
+        bool operator<(const myuint<Template> &value) const;
+        bool operator>(const myuint<Template> &value) const;
         bool operator<=(const myuint<Template> &value) const;
         bool operator>=(const myuint<Template> &value) const;
         int whichisLarger(const myuint<Template> &value) const;
        
     //----- Part Two -----
 
-    //  myuint<Template> operator*(myuint<Template>) multiplication
+        myuint<Template> operator*(const myuint<Template> &value) const;
+        myuint<Template> Multiply(const myuint<Template> &other) const;
     //  myuint<Template> operator/(myuint<Template>) division
     //  myuint<Template> operator%(myuint<Templates>) remainder
 
@@ -75,6 +77,10 @@ ostream& operator<<(ostream& stream, const myuint<Temp> &obj)
             str.push_back(obj.digits[i] + '0');
         }
     }
+    if(leading_zero==true) // ans is zero
+    {
+        stream << "0";
+    }
      
     stream << str;    
 
@@ -98,6 +104,22 @@ myuint<Template> myuint<Template>::operator++()
 }
 
 template <int Template>
+myuint<Template> myuint<Template>::operator--(int)
+{   
+    myuint<Template> ans = (*this);
+    (*this) = (ans).Subtract("1");
+    return ans;
+}
+
+template <int Template>
+myuint<Template> myuint<Template>::operator--() 
+{   
+    (*this) = (*this).Subtract("1");
+    myuint<Template> ans = (*this);
+    return ans;
+}
+
+template <int Template>
 myuint<Template> myuint<Template>::operator+=(const myuint<Template>  &value)
 {
     return (*this) = (*this).Add(value);
@@ -107,6 +129,18 @@ template <int Template>
 myuint<Template> myuint<Template>::operator+=(const string &value)
 {
     return (*this) = (*this).Add(value);
+}
+
+template <int Template>
+myuint<Template> myuint<Template>::operator-=(const myuint<Template>  &value)
+{
+    return (*this) = (*this).Subtract(value);
+}
+
+template <int Template>
+myuint<Template> myuint<Template>::operator-=(const string &value)
+{
+    return (*this) = (*this).Subtract(value);
 }
 
 template <int Template>
@@ -143,6 +177,14 @@ myuint<Template> myuint<Template>::operator+(const myuint<Template> &value) cons
 }
 
 template <int Template>
+myuint<Template> myuint<Template>::operator*(const myuint<Template> &value) const
+{   
+    myuint<Template> ans = (*this).Multiply(value);
+    return ans;
+}
+
+
+template <int Template>
 myuint<Template> myuint<Template>::operator+(const string &value) const
 {   
     myuint<Template> ans = (*this).Add(value);
@@ -150,10 +192,28 @@ myuint<Template> myuint<Template>::operator+(const string &value) const
 }
 
 template <int Template>
-myuint<Template> myuint<Template>::operator-(myuint<Template> value)
+myuint<Template> myuint<Template>::operator-(const myuint<Template> &value) const
 {
-    //To be implemented
-    myuint<Template> ans;
+    if((*this) < value)
+    {
+        cout << "Error: unsigned value doesnt support negative outcomes." << endl;
+        _Exit(0);
+    }
+
+    myuint<Template> ans = (*this).Subtract(value);
+    return ans;
+}
+
+
+template <int Template>
+myuint<Template> myuint<Template>::operator-(const string &value) const
+{  
+     if((*this) < value)
+    {
+        cout << "Error: unsigned value doesnt support negative outcomes." << endl;
+        _Exit(0);
+    }
+    myuint<Template> ans = (*this).Subtract(value);
     return ans;
 }
 

@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/kian/assigment/myuint.cpp
+/home/kian/Task 3/myuint.cpp
 iostream
 -
 myuint.hpp
-/home/kian/assigment/myuint.hpp
+/home/kian/Task 3/myuint.hpp
 algorithm
 -
 stdlib.h
 -
 
-/home/kian/assigment/myuint.hpp
+/home/kian/Task 3/myuint.hpp
 iostream
 -
 vector
