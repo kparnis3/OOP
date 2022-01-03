@@ -14,6 +14,17 @@ public abstract class person implements Serializable
     
     protected String userName;
     protected String password;      
+    protected double balance;
+
+    public void depositMoney(double amount)
+    {
+        balance+=amount;
+    }
+
+    public double retrieveBalance()
+    {
+        return balance;
+    }
 
     public String retrieveUsername()
     {
@@ -36,7 +47,8 @@ public abstract class person implements Serializable
     }
 
     public void register()
-    {
+    {   
+        balance = 0; //starting account should have 0 balance
         Scanner ss = new Scanner(System.in);
         System.out.println("Please enter your username");
         userName = ss.nextLine();
@@ -47,6 +59,7 @@ public abstract class person implements Serializable
         firstcheck = ss.nextLine();
         System.out.println("Enter your password again to confirm");
         secondcheck = ss.nextLine();
+        
  
         if (firstcheck.equals(secondcheck))
         {
