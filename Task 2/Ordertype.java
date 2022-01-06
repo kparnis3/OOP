@@ -4,6 +4,17 @@ import java.io.Serializable;
 public abstract class Ordertype implements Serializable
 {
     protected double quantity;
+    protected String buySell;
+
+    public void setbuySell(String bs)
+    {
+        this.buySell = bs;
+    }
+
+    public String getbuySell()
+    {
+        return buySell;
+    }
 
     public void setQuantity(Double Q)
     {

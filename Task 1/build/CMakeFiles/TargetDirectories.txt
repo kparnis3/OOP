@@ -1,0 +1,3 @@
+/home/kian/git_workspace/OOP/Task 1/build/CMakeFiles/rebuild_cache.dir
+/home/kian/git_workspace/OOP/Task 1/build/CMakeFiles/edit_cache.dir
+/home/kian/git_workspace/OOP/Task 1/build/CMakeFiles/DAG.dir

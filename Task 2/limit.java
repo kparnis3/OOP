@@ -1,7 +1,19 @@
 import java.util.Scanner;
 
 public class limit extends Ordertype
-{    
+{   
+    protected String bidAsk;
+
+    public void setbidAsk(String ba)
+    {
+        this.bidAsk = ba;
+    }
+
+    public String getbidAsk()
+    {
+        return bidAsk;
+    }
+
     public int AskBuySell()
     {
         Scanner ss = new Scanner(System.in);
@@ -9,6 +21,7 @@ public class limit extends Ordertype
         System.out.println("2. Sell");
         return ss.nextInt();        
     }
+
     public double returnQuantity()
     {
         Scanner ss = new Scanner(System.in);
@@ -16,6 +29,7 @@ public class limit extends Ordertype
         return ss.nextInt();
         // return 1;        
     }
+    
     public int AskBidOrAskPrice()
     {
         Scanner ss = new Scanner(System.in);
