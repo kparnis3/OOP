@@ -26,6 +26,68 @@ myuint<Template>::myuint(string value)
     }
 }
 
+template<int Template>
+template<typename type>
+type myuint<Template>::convert_to()
+{
+    int count=0;
+
+    bool leading_zero=true;
+
+    for (int i=0; i<(*this).digits.size();i++)
+    {
+        if((*this).digits[i]!=0)
+        {
+            leading_zero=false;
+        }
+
+        if(leading_zero==false)
+        {
+            count++;
+        }
+    }
+
+    reverse((*this).digits.begin(), (*this).digits.end());
+    type decimal = 1;
+    type value = 0;
+   /* for(auto&it : (*this).digits)
+    {
+        value += it * decimal;
+        decimal *=10;
+    } */
+    for(int i=0; i < count ; i++)
+    {
+        value+= (*this).digits[i] * decimal;
+        decimal *=10;
+    }
+
+    return value;
+
+}
+
+template <int Template>
+myuint<Template>::myuint(int value)
+{
+    string val = to_string(value);
+    static_assert(floor(log2(Template)) == log2(Template), "Must be 2^n bits");
+    static_assert(Template > 0, "invalid bit amount");
+    
+    if(val.size() > Template)
+    {
+        cout<<"Error: size exceeds bitsize" << endl;
+        _Exit(-1);
+    } 
+
+    for(int i =0; i< (Template-val.size()); i++)
+    {
+        digits.push_back(0);
+    }
+    for(int i = 0; i<val.size(); i++)
+    {
+        digits.push_back(val[i] - 48);
+    }
+}
+
 
 template <int Template>
 myuint<Template>::myuint()
@@ -38,7 +100,7 @@ template <int Template>
 myuint<Template> myuint<Template>::Subtract(const myuint<Template> &other) const
 {
     myuint<Template> left = *this;
-    string str="";
+    string hold="";
     if(left.digits.size()!=other.digits.size())
     {
         cout << "Error: num's need to be of same size" << endl;
@@ -61,11 +123,57 @@ myuint<Template> myuint<Template>::Subtract(const myuint<Template> &other) const
             carry = 0;
         }
 
-        str.push_back(sub  + '0');
+        hold.push_back(sub  + '0');
     }
 
-    reverse(str.begin(), str.end());
-    myuint<Template> ans(str);
+    reverse(hold.begin(), hold.end());
+    myuint<Template> ans(hold);
+
+    return ans;
+}
+
+template <int Template>
+myuint<Template> myuint<Template>::Divide(int divisor) const
+{
+    int index = 0;
+    int temp = (*this).digits[index];
+    string hold ="";
+
+    while(temp < divisor)
+    {
+        temp = temp * 10 + ((*this).digits[++index]);
+    }
+
+    while((*this).digits.size() > index)
+    {
+        hold += (temp/divisor) + '0';
+
+        temp = (temp % divisor) * 10 + ((*this).digits[++index]);
+    }
+
+    if((*this).digits.size() == 0)
+    {
+        myuint<Template> ans("0");
+        return ans;
+    }
+
+    
+    myuint<Template> ans(hold);
+    return(ans);
+
+} 
+
+template <int Template>
+myuint<Template> myuint<Template>::Modulus(int moduli) const
+{
+    int solution;
+
+    for(int i =0; i<(*this).digits.size(); i++)
+    {
+        solution = (solution * 10 + (*this).digits[i]) % moduli;
+    }
+
+    myuint<Template> ans(to_string(solution));
 
     return ans;
 }
@@ -142,15 +250,15 @@ myuint<Template> myuint<Template>::Multiply(const myuint<Template> &other) const
         return ans1; 
     }
 
-    string str = "";
+    string hold = "";
 
     while (i>=0)
     {
-        str += to_string(result[i--]);
+        hold += to_string(result[i--]);
     }
 
 
-    myuint<Template> ans(str);
+    myuint<Template> ans(hold);
 
     return ans;
 
@@ -170,18 +278,18 @@ myuint<Template> myuint<Template>::Add(const myuint<Template> &other) const
 
     }
 
-    string str = "";
+    string hold = "";
     for(int i=left.digits.size()-1; i > 0; --i)
     {
         int sum = (left.digits[i] + other.digits[i] + carry);
-        str.push_back(sum%10 + '0');
+        hold.push_back(sum%10 + '0');
 
 
         carry=sum/10;
     }
     
-    reverse(str.begin(), str.end());
-    myuint<Template> ans(str);
+    reverse(hold.begin(), hold.end());
+    myuint<Template> ans(hold);
 
     return ans;
 }
@@ -218,11 +326,11 @@ int myuint<Template>::whichisLarger(const myuint<Template> &value) const
     
     if(count_left < count_right)
     {
-        return 0; 
+        return 0;
     }
     else if(count_left > count_right)
     {
-        return 1;
+        return 1; 
     }
 
     for (int i = value.digits.size() - count_left; i<value.digits.size(); i++) //doesnt matter what we take since equal
@@ -247,7 +355,7 @@ myuint<Template> myuint<Template>::Subtract(const string &other) const
     myuint<Template> new_val(other);
 
     int carry = 0;
-    string str = "";
+    string hold = "";
     for(int i=left.digits.size()-1; i > 0; --i)
     {
         int sub = (left.digits[i] - new_val.digits[i] - carry);
@@ -262,11 +370,11 @@ myuint<Template> myuint<Template>::Subtract(const string &other) const
             carry = 0;
         }
 
-        str.push_back(sub  + '0');
+        hold.push_back(sub  + '0');
     }
 
-    reverse(str.begin(), str.end());
-    myuint<Template> ans(str);
+    reverse(hold.begin(), hold.end());
+    myuint<Template> ans(hold);
 
     return ans;
 }
@@ -286,18 +394,18 @@ myuint<Template> myuint<Template>::Add(const string &other) const
 
     }
 
-    string str = "";
+    string hold = "";
     for(int i=left.digits.size()-1; i > 0; --i)
     {
         int sum = (left.digits[i] + new_val.digits[i] + carry);
-        str.push_back(sum%10 + '0');
+        hold.push_back(sum%10 + '0');
 
 
         carry=sum/10;
     }
     
-    reverse(str.begin(), str.end());
-    myuint<Template> ans(str);
+    reverse(hold.begin(), hold.end());
+    myuint<Template> ans(hold);
 
     return ans;
 }
@@ -305,33 +413,33 @@ myuint<Template> myuint<Template>::Add(const string &other) const
 
 int main()
 { //Addition test
-    myuint<1024> i("20");
-    myuint<1024> j("3980");
+    myuint<1024> Add1("20");
+    myuint<1024> Add2("3980");
 
-    myuint<1024> Add1 = i + j;
+    myuint<1024> Add3 = Add1 + Add2;
     cout<<"Addition of 3980 + 20 is: " << Add1 << endl;
 
-    Add1 += i;
+    Add2 += Add1;
 
-    cout<<"Adding 20 to previous answer: " << Add1 << endl;
+    cout<<"Adding 20 to previous answer: " << Add2 << endl;
 
-    Add1 += "100";
+    Add2 += "100";
 
-    cout<<"Adding 100 to previous answer " << Add1 << endl;
+    cout<<"Adding 100 to previous answer " << Add2 << endl;
 
-    cout << Add1 << endl;
+    cout << Add2 << endl;
 
-    Add1 = i + "100";
+    Add1 = Add2 + "100";
     
     cout <<"Adding 100 to 20: "<< Add1 << endl;
 
     myuint<8> k("1");
-    myuint<8> Add3 = k++;
-    cout << "Add3: " << Add3 << " k: " << k << endl;
+    myuint<8> Add4 = k++;
+    cout << "Add4: " << Add4 << " k: " << k << endl;
 
     myuint<8> L("1");
-    myuint<8> Add4 = ++L;
-    cout << "Add4: " << Add4 << " L: " << L << endl;
+    myuint<8> Add5 = ++L;
+    cout << "Add5: " << Add5 << " L: " << L << endl;
 
     //equality checks
     if(k==L)
@@ -387,7 +495,7 @@ int main()
     cout << "Subtracting 2000 from 32000: "<< u << endl;
 
     myuint<64> sub1("40");
-    sub1 = sub1 - "20";
+    sub1 = sub1 - 20;
 
     cout << "Subtracting 20 from 40: " << sub1 << endl;
 
@@ -418,6 +526,24 @@ int main()
     myuint<1024> multi6 = multi4 * multi5;
 
     cout << multi4 <<" * " << multi5 << ": " << multi6 << endl;
+
+    myuint<64> div1("100");
+
+    myuint<64> div2 = div1 / 5;
+    cout << div2 << endl;
+
+    myuint<8> mod1("625");
+
+    myuint<8> mod2 = mod1 % 5;
+    cout << mod2 << endl;
+    myuint<512> i(5);
+    myuint<512> j = (i<<1000) + 23;
+    int hold = i.convert_to<int>();
+    cout << hold << endl;
+
+    myuint<512> test(5);
+    int val = test.convert_to<int>();
+    cout << val << endl;
 
 
     return 0;
