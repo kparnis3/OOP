@@ -16,6 +16,7 @@ public class mainmenu
         basemenu(newadmin);
     }
     
+    //Method to validate correctness of crypto
     public static void ViewCrypto(boolean isForViewing)
     { 
         crypto c = new crypto();
@@ -39,6 +40,7 @@ public class mainmenu
         
     }
 
+    //Method that will retreve each order and print it line by line
     public static void printOrderBook()
     {
         Path file = Paths.get("orderbook.txt");
@@ -55,7 +57,7 @@ public class mainmenu
         }
 
     }
-
+    //Main system method which tests the functioanlly of depositing money to the system, placing a market or sell order and bringing up the orderbook
     public static void system(user Trader)
     {
         Scanner cc = new Scanner(System.in);
@@ -76,6 +78,7 @@ public class mainmenu
             
             case 1: //view OrderBook
                 printOrderBook();
+                system(Trader);
                 break;
             case 2:
                 OrderSubMenu(Trader);
@@ -88,14 +91,7 @@ public class mainmenu
             case 4:
                 System.out.println("Enter an amount to deposit: ");
                 int user_amount = cc.nextInt();
-                if(user_amount <= 90000.0 || 0 >= user_amount)
-                {
-                    Trader.depositMoney(user_amount);
-                }
-                else
-                {
-                    System.out.println("Not a valid amount!");
-                } 
+                Trader.depositMoney(user_amount);
                 system(Trader);
                 break;
             case 5:
@@ -119,6 +115,7 @@ public class mainmenu
         cc.close();
     }
 
+    //Method which tests out the retrieval of avaiable crypto currencies and sets them
     public static void CryptoMenu(crypto cry)
     {
         System.out.println("Please choose crypto currency:");
@@ -139,13 +136,15 @@ public class mainmenu
         return;
     }
 
+    //method which will test the limit and market classes
     public static void OrderSubMenu(user tr)
     {
         Scanner rr = new Scanner(System.in);
         System.out.println("Please pick what you would like to do:\n");
         System.out.println("1) Limit Order");
         System.out.println("2) Market Order");
-        System.out.println("3) Go Back");
+        System.out.println("3) Cancel Order");
+        System.out.println("4) Go Back");
               
 
         int user_choice = -2;
@@ -156,23 +155,22 @@ public class mainmenu
                 limit l = new limit(); 
                 crypto cr = new crypto();  
                 CryptoMenu(cr);
-                int buySell = l.AskBuySell(); 
 
                 System.out.println("Pick Buy or Sell");
-                if (buySell==1)
+                switch(l.AskBuySell())
                 {
-                    l.setbuySell("Buy");                   
+                    case 1:
+                        l.setbuySell("Buy");                   
+                        break;
+                    case 2:
+                        l.setbuySell("Sell");
+                        break;                
+                    default:
+                        System.out.println("Invalid Choice");
+                        return;
                 }
-                else if(buySell==2) 
-                {
-                    l.setbuySell("Sell");                
-                }
-                else
-                {   
-                    System.out.println("Invalid Choice");
-                    return;
-                }              
-
+                            
+                System.out.println("Would you like to bid or ask?");
                 switch(l.AskBidOrAskPrice())
                 {
                     case 1: //Bid
@@ -182,108 +180,44 @@ public class mainmenu
                         l.setbidAsk("Ask");
                         break;
                     default:
+                        System.out.println("Invalid Choice");
                         return;               
                 }
                 
                 l.setQuantity(l.returnQuantity());
-                System.out.println(" ");
-                System.out.println("Order: ");
-                System.out.println(" Bid/Ask: "+ l.getbidAsk() + "\n Quantity: " + l.getQuantity()+ "\n Buy/Sell: "+ l.getbuySell() + "\n Crypto: " + cr.ChosenCryptoName + "\n Cost: " + l.getQuantity()*cr.ChosenCryptoValue + " €"); //save as market 
-                System.out.println("Proceed with order? (Enter: yes or no) "); //yes -> orderbook (take from account validation)
-                rr.nextLine(); //catch newline
-                String choice = rr.nextLine();
-                
-                switch(choice)
-                {
-                    case "yes": 
-                        
-                        if(l.getbuySell().equals("Buy"))
-                        {
-                            if(tr.retrieveBalance() >= l.getQuantity()*cr.ChosenCryptoValue)
-                            {
-                                tr.depositMoney(-l.getQuantity()*cr.ChosenCryptoValue);
-                                Order or = new Order("limit", l.getQuantity(), l.getbuySell(), l.getbidAsk(),cr.ChosenCryptoName, l.getQuantity()*cr.ChosenCryptoValue, tr.retrieveUsername() );
-
-                            }
-                            else
-                            {
-                                System.out.println("Not enough money");
-                            }
-                            //place order
-                        }
-                        else //sell
-                        {
-                                Order or = new Order("limit", l.getQuantity(),  l.getbuySell(), l.getbidAsk(), cr.ChosenCryptoName, l.getQuantity()*cr.ChosenCryptoValue, tr.retrieveUsername() );
-                        }
-
-                        break;
-                    case "no": //no
-                        break;
-                    default:
-                        return;               
-                }
-                //OrderBook b = new ORDERBOOK()          
+                l.confirmLimit(l, cr, tr);
                 break;
 
             case 2:
-                market o = new market();     
+                market mar = new market();     
                 crypto crc = new crypto();  
                 CryptoMenu(crc); 
                 System.out.println("Pick buy or sell");      
-                int buySellInt = o.AskBuySell(); //buySell  = 1- Buy //2=Sell
-                if (buySellInt==1) {
-                    o.setbuySell("Buy");                   
-                }
-                else if(buySellInt==2) 
+                switch(mar.AskBuySell())
                 {
-                    o.setbuySell("Sell");               
-                }
-                else
-                {
-                    return;
-                }
-                o.setQuantity(o.returnQuantity()); 
-                System.out.println(" ");
-                System.out.println("Order: ");
-                System.out.println(" Quantity: " + o.getQuantity()+ "\n Buy/Sell: "+ o.getbuySell() + "\n Crypto: " + crc.ChosenCryptoName + "\n Cost: " + o.getQuantity() * crc.ChosenCryptoValue + " €"); //save as market 
-                System.out.println("Proceed with order? "); //yes -> orderbook (take from account validation)
-                
-                rr.nextLine();
-                String choice2 = rr.nextLine();
-                switch(choice2)
-                {
-                    case "yes": 
-                        
-                        if(o.getbuySell().equals("Buy"))
-                        {
-                            if(tr.retrieveBalance() >= o.getQuantity()*crc.ChosenCryptoValue)
-                            {
-                                tr.depositMoney(-o.getQuantity()*crc.ChosenCryptoValue);
-                                Order or = new Order("market", o.getQuantity(), o.getbuySell(), "null" , crc.ChosenCryptoName, o.getQuantity()*crc.ChosenCryptoValue, tr.retrieveUsername() );
-
-                            }
-                            else
-                            {
-                                System.out.println("Not enough money");
-                            }
-                            //place order
-                        }
-                        else //sell
-                        {
-                            Order or = new Order("market", o.getQuantity(),  o.getbuySell(), "null" , crc.ChosenCryptoName, o.getQuantity()*crc.ChosenCryptoValue, tr.retrieveUsername() );
-                        }
-
+                    case 1:
+                        mar.setbuySell("Buy");                   
                         break;
-                    case "no": //no
-                        System.out.println("Order declined");
-                        break;
+                    case 2:
+                        mar.setbuySell("Sell");
+                        break;                
                     default:
-                        return;    
-                }               
+                        System.out.println("Invalid Choice");
+                        return;
+                }
+                
+                mar.setQuantity(mar.returnQuantity()); 
+                mar.confirmMarket(mar, crc, tr);            
                 break;
             case 3:
+                CancelOrder Order = new CancelOrder();
+                System.out.println("Enter OrderID to cancel");
+                rr.nextLine();
+                String OrderID = rr.nextLine();
+                Order.removeOrder(OrderID, tr);
+                break;   
+            case 4:
                 System.out.println(" ");
-                //cc.close();
                 return;
             default:
                 System.out.println("Invalid choice");
@@ -293,7 +227,7 @@ public class mainmenu
 
        // cc.close();
     }
-
+//Base menu created to test out the function and interaction between the administraor class and the user class
     public static void basemenu(administrator adm)
     {
         System.out.println("Please choose:\n1) Register\n2) Login\n3) Exit");
@@ -324,7 +258,7 @@ public class mainmenu
             basemenu(adm);
 
         case 2:
-            //login system
+            //simple login system implementation
             getData("trader.data");
 
             String pass, user;
@@ -335,6 +269,7 @@ public class mainmenu
                      
             for(user Trader: UserData)
             {
+                System.out.println(Trader.retrieveUsername());
              if (Trader.retrieveUsername().equals(user))
              {
                 while(!Trader.retrievePassword().equals(pass))
@@ -350,6 +285,7 @@ public class mainmenu
                 System.out.println("Admin please write 'approve' if you would like the user to use the system.");
                 
                 adm_choice = sc.nextLine();
+                //approval of system is tested here
                 if (adm_choice.equals("approve"))
                 {  
                     adm.approveRequest(Trader);
@@ -373,14 +309,12 @@ public class mainmenu
                  
 
              }
-             else
-             {
-                 System.out.println("Username not registered!");
-                 basemenu(adm);
-                 break;
-             }
             }
+
+            System.out.println("Username not registered!");
+            basemenu(adm);
             break;
+             
         case 3:
             System.exit(0);
         default:
@@ -390,6 +324,7 @@ public class mainmenu
     sc.close();
     }
 
+//Method which will get the users data
     public static void getData(String nameOfFile)
     {
         try
@@ -416,7 +351,7 @@ public class mainmenu
 
     }
 
-
+//Method which will save the user's data externally
     public static void saveExternally(String nameOfFile, Object obj)
     {
         try

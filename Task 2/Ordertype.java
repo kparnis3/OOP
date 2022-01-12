@@ -30,5 +30,4 @@ public abstract class Ordertype implements Serializable
 
     public abstract double returnQuantity();
 
-    //Enter quantity in main menu
 }

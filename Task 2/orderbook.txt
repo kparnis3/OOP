@@ -1,2 +1,3 @@
-market 100.0 Buy null Dogecoin 20000.0 wyvern
-limit 1.0 Buy Ask Bitcoin 300.0 wyvern
+3719 market 20.0 Sell null Dogecoin 4000.0 wyvern
+6939 market 200.0 Sell null Dogecoin 40000.0 wyvern
+7215 market 200.0 Buy null Bitcoin 60000.0 wyvern

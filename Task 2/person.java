@@ -18,7 +18,15 @@ public abstract class person implements Serializable
 
     public void depositMoney(double amount)
     {
-        balance+=amount;
+        if(amount <= 100000.0 || 0 >= amount)
+        {
+            balance+=amount;
+        }
+        else
+        {
+            System.out.println("Not a valid amount!");
+        } 
+    
     }
 
     public double retrieveBalance()
@@ -47,6 +55,7 @@ public abstract class person implements Serializable
         return surname;
     }
 
+    //uponcreation of user registration is called
     public void register()
     {   
         balance = 0; //starting account should have 0 balance
