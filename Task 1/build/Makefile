@@ -142,32 +142,32 @@ DAG/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DAG.dir/build.make CMakeFiles/DAG.dir/build
 .PHONY : DAG/fast
 
-DAG.o: DAG.cpp.o
+Test.o: Test.cpp.o
 
-.PHONY : DAG.o
+.PHONY : Test.o
 
 # target to build an object file
-DAG.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DAG.dir/build.make CMakeFiles/DAG.dir/DAG.cpp.o
-.PHONY : DAG.cpp.o
+Test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DAG.dir/build.make CMakeFiles/DAG.dir/Test.cpp.o
+.PHONY : Test.cpp.o
 
-DAG.i: DAG.cpp.i
+Test.i: Test.cpp.i
 
-.PHONY : DAG.i
+.PHONY : Test.i
 
 # target to preprocess a source file
-DAG.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DAG.dir/build.make CMakeFiles/DAG.dir/DAG.cpp.i
-.PHONY : DAG.cpp.i
+Test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DAG.dir/build.make CMakeFiles/DAG.dir/Test.cpp.i
+.PHONY : Test.cpp.i
 
-DAG.s: DAG.cpp.s
+Test.s: Test.cpp.s
 
-.PHONY : DAG.s
+.PHONY : Test.s
 
 # target to generate assembly for a file
-DAG.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DAG.dir/build.make CMakeFiles/DAG.dir/DAG.cpp.s
-.PHONY : DAG.cpp.s
+Test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DAG.dir/build.make CMakeFiles/DAG.dir/Test.cpp.s
+.PHONY : Test.cpp.s
 
 # Help Target
 help:
@@ -178,9 +178,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... DAG"
-	@echo "... DAG.o"
-	@echo "... DAG.i"
-	@echo "... DAG.s"
+	@echo "... Test.o"
+	@echo "... Test.i"
+	@echo "... Test.s"
 .PHONY : help
 
 

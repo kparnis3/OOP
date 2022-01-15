@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/kian/git_workspace/OOP/Task 1/DAG.cpp" "/home/kian/git_workspace/OOP/Task 1/build/CMakeFiles/DAG.dir/DAG.cpp.o"
+  "/home/kian/git_workspace/OOP/Task 1/Test.cpp" "/home/kian/git_workspace/OOP/Task 1/build/CMakeFiles/DAG.dir/Test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/kian/git_workspace/OOP/Task 1/DAG.cpp
+/home/kian/git_workspace/OOP/Task 1/DAG.hpp
 iostream
 -
 memory
@@ -15,4 +15,8 @@ vector
 -
 set
 -
+
+/home/kian/git_workspace/OOP/Task 1/Test.cpp
+DAG.hpp
+/home/kian/git_workspace/OOP/Task 1/DAG.hpp
 

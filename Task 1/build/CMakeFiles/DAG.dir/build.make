@@ -76,27 +76,27 @@ include CMakeFiles/DAG.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/DAG.dir/flags.make
 
-CMakeFiles/DAG.dir/DAG.cpp.o: CMakeFiles/DAG.dir/flags.make
-CMakeFiles/DAG.dir/DAG.cpp.o: ../DAG.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/kian/git_workspace/OOP/Task 1/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DAG.dir/DAG.cpp.o"
-	/bin/x86_64-linux-gnu-g++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DAG.dir/DAG.cpp.o -c "/home/kian/git_workspace/OOP/Task 1/DAG.cpp"
+CMakeFiles/DAG.dir/Test.cpp.o: CMakeFiles/DAG.dir/flags.make
+CMakeFiles/DAG.dir/Test.cpp.o: ../Test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/kian/git_workspace/OOP/Task 1/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DAG.dir/Test.cpp.o"
+	/bin/x86_64-linux-gnu-g++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DAG.dir/Test.cpp.o -c "/home/kian/git_workspace/OOP/Task 1/Test.cpp"
 
-CMakeFiles/DAG.dir/DAG.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DAG.dir/DAG.cpp.i"
-	/bin/x86_64-linux-gnu-g++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/kian/git_workspace/OOP/Task 1/DAG.cpp" > CMakeFiles/DAG.dir/DAG.cpp.i
+CMakeFiles/DAG.dir/Test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DAG.dir/Test.cpp.i"
+	/bin/x86_64-linux-gnu-g++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/kian/git_workspace/OOP/Task 1/Test.cpp" > CMakeFiles/DAG.dir/Test.cpp.i
 
-CMakeFiles/DAG.dir/DAG.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DAG.dir/DAG.cpp.s"
-	/bin/x86_64-linux-gnu-g++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/kian/git_workspace/OOP/Task 1/DAG.cpp" -o CMakeFiles/DAG.dir/DAG.cpp.s
+CMakeFiles/DAG.dir/Test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DAG.dir/Test.cpp.s"
+	/bin/x86_64-linux-gnu-g++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/kian/git_workspace/OOP/Task 1/Test.cpp" -o CMakeFiles/DAG.dir/Test.cpp.s
 
 # Object files for target DAG
 DAG_OBJECTS = \
-"CMakeFiles/DAG.dir/DAG.cpp.o"
+"CMakeFiles/DAG.dir/Test.cpp.o"
 
 # External object files for target DAG
 DAG_EXTERNAL_OBJECTS =
 
-DAG: CMakeFiles/DAG.dir/DAG.cpp.o
+DAG: CMakeFiles/DAG.dir/Test.cpp.o
 DAG: CMakeFiles/DAG.dir/build.make
 DAG: CMakeFiles/DAG.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/kian/git_workspace/OOP/Task 1/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable DAG"

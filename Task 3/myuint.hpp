@@ -7,7 +7,7 @@ template <int Template>
 class myuint
 {
     private:
-        vector<int> digits; 
+        vector<short> digits; 
 
     public:
         myuint(string value);

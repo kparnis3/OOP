@@ -142,32 +142,32 @@ myuint/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/myuint.dir/build.make CMakeFiles/myuint.dir/build
 .PHONY : myuint/fast
 
-myuint.o: myuint.cpp.o
+Tests.o: Tests.cpp.o
 
-.PHONY : myuint.o
+.PHONY : Tests.o
 
 # target to build an object file
-myuint.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myuint.dir/build.make CMakeFiles/myuint.dir/myuint.cpp.o
-.PHONY : myuint.cpp.o
+Tests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myuint.dir/build.make CMakeFiles/myuint.dir/Tests.cpp.o
+.PHONY : Tests.cpp.o
 
-myuint.i: myuint.cpp.i
+Tests.i: Tests.cpp.i
 
-.PHONY : myuint.i
+.PHONY : Tests.i
 
 # target to preprocess a source file
-myuint.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myuint.dir/build.make CMakeFiles/myuint.dir/myuint.cpp.i
-.PHONY : myuint.cpp.i
+Tests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myuint.dir/build.make CMakeFiles/myuint.dir/Tests.cpp.i
+.PHONY : Tests.cpp.i
 
-myuint.s: myuint.cpp.s
+Tests.s: Tests.cpp.s
 
-.PHONY : myuint.s
+.PHONY : Tests.s
 
 # target to generate assembly for a file
-myuint.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/myuint.dir/build.make CMakeFiles/myuint.dir/myuint.cpp.s
-.PHONY : myuint.cpp.s
+Tests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/myuint.dir/build.make CMakeFiles/myuint.dir/Tests.cpp.s
+.PHONY : Tests.cpp.s
 
 # Help Target
 help:
@@ -178,9 +178,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... myuint"
-	@echo "... myuint.o"
-	@echo "... myuint.i"
-	@echo "... myuint.s"
+	@echo "... Tests.o"
+	@echo "... Tests.i"
+	@echo "... Tests.s"
 .PHONY : help
 
 

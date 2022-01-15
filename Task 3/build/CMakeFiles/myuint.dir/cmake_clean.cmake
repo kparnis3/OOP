@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/myuint.dir/myuint.cpp.o"
+  "CMakeFiles/myuint.dir/Tests.cpp.o"
   "myuint"
   "myuint.pdb"
 )

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/DAG.dir/DAG.cpp.o"
+  "CMakeFiles/DAG.dir/Test.cpp.o"
   "DAG"
   "DAG.pdb"
 )

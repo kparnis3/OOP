@@ -41,7 +41,7 @@
 			"language" : "CXX",
 			"sourceIndexes" : 
 			[
-				0
+				2
 			]
 		}
 	],
@@ -71,17 +71,18 @@
 	"sourceGroups" : 
 	[
 		{
-			"name" : "Source Files",
-			"sourceIndexes" : 
-			[
-				0
-			]
-		},
-		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
+				0,
 				1
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				2
 			]
 		}
 	],
@@ -89,13 +90,18 @@
 	[
 		{
 			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "myuint.cpp",
+			"path" : "functions.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"path" : "myuint.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Tests.cpp",
 			"sourceGroupIndex" : 1
 		}
 	],

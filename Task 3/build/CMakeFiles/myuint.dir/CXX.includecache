@@ -6,11 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/kian/git_workspace/OOP/Task 3/myuint.cpp
-iostream
--
+/home/kian/git_workspace/OOP/Task 3/Tests.cpp
 myuint.hpp
 /home/kian/git_workspace/OOP/Task 3/myuint.hpp
+functions.hpp
+/home/kian/git_workspace/OOP/Task 3/functions.hpp
+
+/home/kian/git_workspace/OOP/Task 3/functions.hpp
+iostream
+-
 algorithm
 -
 stdlib.h

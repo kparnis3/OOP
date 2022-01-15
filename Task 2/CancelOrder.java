@@ -25,7 +25,7 @@ public class CancelOrder
         while((currentLine = br.readLine()) != null)
         {
             data = currentLine.split(" ");
-            if(!(data[positionID].equalsIgnoreCase(ID)) && !data[positionUser].equalsIgnoreCase(tr.retrieveUsername()))
+            if(!(data[positionID].equalsIgnoreCase(ID)) || !data[positionUser].equalsIgnoreCase(tr.retrieveUsername()))
             {
                 pw.println(currentLine);
             }

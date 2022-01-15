@@ -37,9 +37,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "myuint::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-myuint-Debug-644eb794adfc521db19d.json",
-					"name" : "myuint",
+					"id" : "DAG::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-DAG-Debug-2f6e43b2defbbff866cb.json",
+					"name" : "DAG",
 					"projectIndex" : 0
 				}
 			]
@@ -48,8 +48,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/kian/git_workspace/OOP/Task 3/build",
-		"source" : "/home/kian/git_workspace/OOP/Task 3"
+		"build" : "/home/kian/git_workspace/OOP/Task 1/build",
+		"source" : "/home/kian/git_workspace/OOP/Task 1"
 	},
 	"version" : 
 	{

@@ -76,27 +76,27 @@ include CMakeFiles/myuint.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/myuint.dir/flags.make
 
-CMakeFiles/myuint.dir/myuint.cpp.o: CMakeFiles/myuint.dir/flags.make
-CMakeFiles/myuint.dir/myuint.cpp.o: ../myuint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/kian/git_workspace/OOP/Task 3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/myuint.dir/myuint.cpp.o"
-	/bin/x86_64-linux-gnu-g++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myuint.dir/myuint.cpp.o -c "/home/kian/git_workspace/OOP/Task 3/myuint.cpp"
+CMakeFiles/myuint.dir/Tests.cpp.o: CMakeFiles/myuint.dir/flags.make
+CMakeFiles/myuint.dir/Tests.cpp.o: ../Tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/kian/git_workspace/OOP/Task 3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/myuint.dir/Tests.cpp.o"
+	/bin/x86_64-linux-gnu-g++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myuint.dir/Tests.cpp.o -c "/home/kian/git_workspace/OOP/Task 3/Tests.cpp"
 
-CMakeFiles/myuint.dir/myuint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myuint.dir/myuint.cpp.i"
-	/bin/x86_64-linux-gnu-g++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/kian/git_workspace/OOP/Task 3/myuint.cpp" > CMakeFiles/myuint.dir/myuint.cpp.i
+CMakeFiles/myuint.dir/Tests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myuint.dir/Tests.cpp.i"
+	/bin/x86_64-linux-gnu-g++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/kian/git_workspace/OOP/Task 3/Tests.cpp" > CMakeFiles/myuint.dir/Tests.cpp.i
 
-CMakeFiles/myuint.dir/myuint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myuint.dir/myuint.cpp.s"
-	/bin/x86_64-linux-gnu-g++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/kian/git_workspace/OOP/Task 3/myuint.cpp" -o CMakeFiles/myuint.dir/myuint.cpp.s
+CMakeFiles/myuint.dir/Tests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myuint.dir/Tests.cpp.s"
+	/bin/x86_64-linux-gnu-g++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/kian/git_workspace/OOP/Task 3/Tests.cpp" -o CMakeFiles/myuint.dir/Tests.cpp.s
 
 # Object files for target myuint
 myuint_OBJECTS = \
-"CMakeFiles/myuint.dir/myuint.cpp.o"
+"CMakeFiles/myuint.dir/Tests.cpp.o"
 
 # External object files for target myuint
 myuint_EXTERNAL_OBJECTS =
 
-myuint: CMakeFiles/myuint.dir/myuint.cpp.o
+myuint: CMakeFiles/myuint.dir/Tests.cpp.o
 myuint: CMakeFiles/myuint.dir/build.make
 myuint: CMakeFiles/myuint.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/kian/git_workspace/OOP/Task 3/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable myuint"

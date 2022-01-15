@@ -1,5 +1,4 @@
 #include <iostream>
-#include "myuint.hpp"
 #include <algorithm>
 #include <stdlib.h>
 using namespace std;
@@ -74,7 +73,7 @@ myuint<Template>::myuint(int value)
     
     if(val.size() > Template)
     {
-        cout<<"Error: size exceeds bitsize" << endl;
+        cout<<"Error: size exceeded" << endl;
         _Exit(-1);
     } 
 
@@ -135,6 +134,11 @@ myuint<Template> myuint<Template>::Subtract(const myuint<Template> &other) const
 template <int Template>
 myuint<Template> myuint<Template>::Divide(int divisor) const
 {
+    if(divisor==0)
+    {
+        cout<< "Error: attempting to divide by 0 "<< endl;
+        exit(0);
+    }
     int index = 0;
     int temp = (*this).digits[index];
     string hold ="";
@@ -172,7 +176,9 @@ myuint<Template> myuint<Template>::Modulus(int moduli) const
     {
         solution = (solution * 10 + (*this).digits[i]) % moduli;
     }
-
+    
+    
+    
     myuint<Template> ans(to_string(solution));
 
     return ans;
@@ -410,142 +416,3 @@ myuint<Template> myuint<Template>::Add(const string &other) const
     return ans;
 }
 
-
-int main()
-{ //Addition test
-    myuint<1024> Add1("20");
-    myuint<1024> Add2("3980");
-
-    myuint<1024> Add3 = Add1 + Add2;
-    cout<<"Addition of 3980 + 20 is: " << Add1 << endl;
-
-    Add2 += Add1;
-
-    cout<<"Adding 20 to previous answer: " << Add2 << endl;
-
-    Add2 += "100";
-
-    cout<<"Adding 100 to previous answer " << Add2 << endl;
-
-    cout << Add2 << endl;
-
-    Add1 = Add2 + "100";
-    
-    cout <<"Adding 100 to 20: "<< Add1 << endl;
-
-    myuint<8> k("1");
-    myuint<8> Add4 = k++;
-    cout << "Add4: " << Add4 << " k: " << k << endl;
-
-    myuint<8> L("1");
-    myuint<8> Add5 = ++L;
-    cout << "Add5: " << Add5 << " L: " << L << endl;
-
-    //equality checks
-    if(k==L)
-    {
-        cout << "Both are equal" << endl;
-    }
-    else
-    {
-        cout << "Result isn't equal" << endl;
-    }
-
-
-    myuint<1024> m("1002");
-    myuint<1024> y("1000");
-
-    if(m<y)
-    {
-        cout << y <<" is greater" << endl;
-    }
-    else if (m>y)
-    {
-        cout << m <<" is greater" <<endl;
-    }
-    else
-    {
-        cout << "Both are equal" << endl;
-    }
-
-    myuint<1024> u("32000");
-    myuint<1024> o("2000");
-
-    if(u>=o)
-    {
-        cout << u << " is greater or equal" << endl;
-    }
-    else
-    {
-        cout << o <<" is greater" << endl;
-    }
-
-    if(u!=o)
-    {
-         cout << u <<" is not equal " << o << endl;
-    }
-    else
-    {
-        cout << u <<" is equal to " << o << endl;
-    }
-
-    //Subtraction tests
-    u = u-o;
-
-    cout << "Subtracting 2000 from 32000: "<< u << endl;
-
-    myuint<64> sub1("40");
-    sub1 = sub1 - 20;
-
-    cout << "Subtracting 20 from 40: " << sub1 << endl;
-
-    u -= "15000";
-    u -= o;
-
-    cout << "Subtracting 2000 and 15000 from 30000: "<< u << endl;
-
-    myuint<2> n("2");
-    myuint<2> sub2 = --n;
-    cout << "sub2: " << sub2 << " n: " << n << endl;
-    
-    myuint<2> p("2");
-    myuint<2> sub3 = p--;
-    cout << "sub3: " << sub3 << " p: " << p << endl;
-    
-
-    myuint<1024> multi1("33");
-    myuint<1024> multi2("0");
-
-    myuint<1024> multi3 = multi1 * multi2;
-
-    cout << multi1 <<" * " << multi2 << ": " << multi3 << endl; 
-
-    myuint<1024> multi4("22");
-    myuint<1024> multi5("42");
-
-    myuint<1024> multi6 = multi4 * multi5;
-
-    cout << multi4 <<" * " << multi5 << ": " << multi6 << endl;
-
-    myuint<64> div1("100");
-
-    myuint<64> div2 = div1 / 5;
-    cout << div2 << endl;
-
-    myuint<8> mod1("625");
-
-    myuint<8> mod2 = mod1 % 5;
-    cout << mod2 << endl;
-    myuint<512> i(5);
-    myuint<512> j = (i<<1000) + 23;
-    int hold = i.convert_to<int>();
-    cout << hold << endl;
-
-    myuint<512> test(5);
-    int val = test.convert_to<int>();
-    cout << val << endl;
-
-
-    return 0;
-    
-}
