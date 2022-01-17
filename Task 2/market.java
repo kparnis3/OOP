@@ -36,7 +36,7 @@ public class market extends Ordertype
                 {
                     if(tr.retrieveBalance() >= o.getQuantity()*crc.ChosenCryptoValue)
                     {
-                        tr.depositMoney(-o.getQuantity()*crc.ChosenCryptoValue);
+                        tr.setBalance(-o.getQuantity()*crc.ChosenCryptoValue);
                         Order or = new Order("market", o.getQuantity(), o.getbuySell(), "null" , crc.ChosenCryptoName, o.getQuantity()*crc.ChosenCryptoValue, tr.retrieveUsername());
                     }
                     else

@@ -56,7 +56,7 @@ public class limit extends Ordertype
             {
                 if(tr.retrieveBalance() >= l.getQuantity()*crc.ChosenCryptoValue)
                 {
-                    tr.depositMoney(-l.getQuantity()*crc.ChosenCryptoValue);
+                    tr.setBalance(-l.getQuantity()*crc.ChosenCryptoValue);
                     Order or = new Order("limit", l.getQuantity(), l.getbuySell(), l.getbidAsk(),crc.ChosenCryptoName, l.getQuantity()*crc.ChosenCryptoValue, tr.retrieveUsername());
 
                 }

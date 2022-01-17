@@ -79,8 +79,9 @@ template <int Temp>
 ostream& operator<<(ostream& stream, const myuint<Temp> &obj)
 {
     string str = "";
-    bool leading_zero = true;   
-    for (int i=0; i<obj.digits.size();i++)
+    bool leading_zero = true; 
+    int length=obj.digits.size();
+    for (int i=0; i<length;i++)
     {
         if(obj.digits[i]!=0)
         {

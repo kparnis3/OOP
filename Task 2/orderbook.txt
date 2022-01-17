@@ -1,1 +1,2 @@
-8298 market 400.0 Buy null Cardano 40000.0 twootie
+7655 market 200.0 Sell null Dogecoin 40000.0 twootie
+6893 limit 200.0 Buy Ask Ethereum 80000.0 wyvern

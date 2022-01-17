@@ -16,9 +16,15 @@ public abstract class person implements Serializable
     protected String password;      
     protected double balance;
 
+    
+   public void setBalance(double amountDifference)
+   {
+      this.balance = balance+amountDifference;
+   }
+
     public void depositMoney(double amount)
     {
-        if(amount <= 100000.0 || 0 >= amount)
+        if(amount <= 100000.0 && amount > 0)
         {
             balance+=amount;
         }

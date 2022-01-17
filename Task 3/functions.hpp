@@ -8,18 +8,19 @@ myuint<Template>::myuint(string value)
 {
     static_assert(floor(log2(Template)) == log2(Template), "Must be 2^n bits");
     static_assert(Template > 0, "invalid bit amount");
-    
+    int length = (Template-value.size());
+    int length2 = value.size();
     if(value.size() > Template)
     {
         cout<<"Error: size exceeds bitsize" << endl;
         _Exit(-1);
     } 
 
-    for(int i =0; i< (Template-value.size()); i++)
+    for(int i =0; i< length; i++)
     {
         digits.push_back(0);
     }
-    for(int i = 0; i<value.size(); i++)
+    for(int i = 0; i<length2; i++)
     {
         digits.push_back(value[i] - 48);
     }
@@ -32,8 +33,8 @@ type myuint<Template>::convert_to()
     int count=0;
 
     bool leading_zero=true;
-
-    for (int i=0; i<(*this).digits.size();i++)
+    int length = (*this).digits.size();
+    for (int i=0; i<length;i++)
     {
         if((*this).digits[i]!=0)
         {
@@ -49,11 +50,7 @@ type myuint<Template>::convert_to()
     reverse((*this).digits.begin(), (*this).digits.end());
     type decimal = 1;
     type value = 0;
-   /* for(auto&it : (*this).digits)
-    {
-        value += it * decimal;
-        decimal *=10;
-    } */
+  
     for(int i=0; i < count ; i++)
     {
         value+= (*this).digits[i] * decimal;
@@ -70,18 +67,19 @@ myuint<Template>::myuint(int value)
     string val = to_string(value);
     static_assert(floor(log2(Template)) == log2(Template), "Must be 2^n bits");
     static_assert(Template > 0, "invalid bit amount");
-    
+    int length = (Template-val.size());
+    int length2 = val.size();
     if(val.size() > Template)
     {
         cout<<"Error: size exceeded" << endl;
         _Exit(-1);
     } 
 
-    for(int i =0; i< (Template-val.size()); i++)
+    for(int i =0; i< length; i++)
     {
         digits.push_back(0);
     }
-    for(int i = 0; i<val.size(); i++)
+    for(int i = 0; i<length2; i++)
     {
         digits.push_back(val[i] - 48);
     }
@@ -107,8 +105,8 @@ myuint<Template> myuint<Template>::Subtract(const myuint<Template> &other) const
 
     }
     int carry =0;
-
-    for(int i=left.digits.size()-1; i > 0; --i)
+    int length = left.digits.size()-1;
+    for(int i=length; i > 0; --i)
     {
         int sub = (left.digits[i] - other.digits[i] - carry);
         ;
@@ -142,13 +140,14 @@ myuint<Template> myuint<Template>::Divide(int divisor) const
     int index = 0;
     int temp = (*this).digits[index];
     string hold ="";
+    int length = (*this).digits.size();
 
     while(temp < divisor)
     {
         temp = temp * 10 + ((*this).digits[++index]);
     }
 
-    while((*this).digits.size() > index)
+    while(length > index)
     {
         hold += (temp/divisor) + '0';
 
@@ -171,8 +170,8 @@ template <int Template>
 myuint<Template> myuint<Template>::Modulus(int moduli) const
 {
     int solution;
-
-    for(int i =0; i<(*this).digits.size(); i++)
+    int length = (*this).digits.size();
+    for(int i =0; i<length; i++)
     {
         solution = (solution * 10 + (*this).digits[i]) % moduli;
     }
@@ -190,8 +189,8 @@ myuint<Template> myuint<Template>::Multiply(const myuint<Template> &other) const
     int count_left=0, count_right=0;
 
     bool leading_zero_left=true, leading_zero_right = true;
-
-    for (int i=0; i<(*this).digits.size();i++)
+    int length = (*this).digits.size();
+    for (int i=0; i<length;i++)
     {
         if((*this).digits[i]!=0)
         {   
@@ -221,13 +220,14 @@ myuint<Template> myuint<Template>::Multiply(const myuint<Template> &other) const
 
     int num1=0;
     int num2=0;
-
-    for(int i=(*this).digits.size()-1; i>=((*this).digits.size() - count_left) ; i--)
+    int length1 = (*this).digits.size();
+    int length2 = (other).digits.size();
+    for(int i=length1-1; i>=(length1 - count_left) ; i--)
     {  
         int carry = 0;
 
         num2=0;
-        for(int j=(other).digits.size()-1; j>=(other.digits.size() - count_right) ; j--)
+        for(int j=length2-1; j>=(length2 - count_right) ; j--)
         {
             int sum = left.digits[i] * other.digits[i] + result[num1 + num2] + carry;
             carry =sum/10;
@@ -285,7 +285,8 @@ myuint<Template> myuint<Template>::Add(const myuint<Template> &other) const
     }
 
     string hold = "";
-    for(int i=left.digits.size()-1; i > 0; --i)
+    int length = left.digits.size();
+    for(int i=length-1; i > 0; --i)
     {
         int sum = (left.digits[i] + other.digits[i] + carry);
         hold.push_back(sum%10 + '0');
@@ -306,8 +307,8 @@ int myuint<Template>::whichisLarger(const myuint<Template> &value) const
     int count_left=0, count_right=0;
 
     bool leading_zero_left=true, leading_zero_right = true;
-
-    for (int i=0; i<value.digits.size();i++)
+    int length = value.digits.size();
+    for (int i=0; i<length;i++)
     {
         if((*this).digits[i]!=0)
         {
@@ -339,7 +340,7 @@ int myuint<Template>::whichisLarger(const myuint<Template> &value) const
         return 1; 
     }
 
-    for (int i = value.digits.size() - count_left; i<value.digits.size(); i++) //doesnt matter what we take since equal
+    for (int i = length - count_left; i<length; i++) //doesnt matter what we take since equal
     {
        if((*this).digits[i]<value.digits[i])
         {

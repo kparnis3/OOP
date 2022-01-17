@@ -96,9 +96,9 @@ void SubtractionTests()
     //Subtraction tests
     myuint<1024> u("320000000000000000000000");
     myuint<1024> o("20000000000000000000000");
-    u = u-o;
+    myuint<1024> f = u -o;
 
-    cout << "Subtracting "<< u << " from " << o <<": "<< u << endl;
+    cout << "Subtracting "<< o << " from " << u <<": "<< f << endl;
 
     myuint<64> sub1("40");
     sub1 = sub1 - 20;
@@ -171,12 +171,13 @@ int main()
 { 
     cout<<foo()<<endl;
 
-    //AdditionTests();
-    //RalationalTests();
-    //SubtractionTests();
-    //MultiplicationTests();
-    //DivisionTests();
-    //ModulusTests();
+    AdditionTests();
+    RalationalTests();
+    //SubtractionTests(); //this test exists program
+    MultiplicationTests();
+    ModulusTests();
+    DivisionTests(); //this test also exists program
+    
 
     return 0;
     

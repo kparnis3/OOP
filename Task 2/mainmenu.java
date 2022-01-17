@@ -269,7 +269,7 @@ public class mainmenu
                      
             for(user Trader: UserData)
             {
-                System.out.println(Trader.retrieveUsername());
+            
              if (Trader.retrieveUsername().equals(user))
              {
                 while(!Trader.retrievePassword().equals(pass))
